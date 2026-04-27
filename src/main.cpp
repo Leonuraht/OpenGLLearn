@@ -69,6 +69,8 @@ glm::vec3 cubePositions[] = {
     glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
     glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 
+
+
 int main() {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -191,12 +193,14 @@ int main() {
                               100.0f);
     glm::mat4 view;
     view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,0.0f, -3.0f));
+
+
     glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE,
                        glm::value_ptr(projec));
     glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
                        glm::value_ptr(view));
-    float k = 0.0f;
     glEnable(GL_DEPTH_TEST);
+    int loooc = glGetUniformLocation(program, "transform");
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
         float gval = sin(time) / 2.0f;
@@ -209,7 +213,6 @@ int main() {
             movem -= 0.1;
         // mats = glm::translate(mats, glm::vec3(0.0f, 0.0f, 0.0f));
         // mats = glm::scale(mats, glm::vec3(gval, gval, 0.5f));
-        k++;
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(program);
@@ -218,8 +221,8 @@ int main() {
         for (int i = 0; i < 10; i++) {
             glm::mat4 mats = glm::translate(glm::mat4(1.0f), cubePositions[i]);
             mats =
-                glm::rotate(mats, glm::radians(k), glm::vec3(1.0f, 1.0f, 1.0f));
-            glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1,
+                glm::rotate(mats, glm::radians(45.0f * i), glm::vec3( 0.0f, 0.0f,1.0f));
+            glUniformMatrix4fv(loooc, 1,
                                GL_FALSE, glm::value_ptr(mats));
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, (void *)0);
         }
