@@ -238,6 +238,11 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/ext/matrix_float4x4_precision.hpp \
  /usr/include/glm/detail/func_matrix.inl \
  /usr/include/glm/ext/matrix_transform.inl \
+ /usr/include/glm/ext/quaternion_geometric.hpp \
+ /usr/include/glm/ext/vector_relational.hpp \
+ /usr/include/glm/ext/vector_relational.inl \
+ /usr/include/glm/detail/type_float.hpp \
+ /usr/include/glm/ext/quaternion_geometric.inl \
  /home/leonuraht/storage/CFiles/OpenGL/include/Misc/shaders.hpp \
  /usr/include/c++/15.2.1/cstdio /usr/include/stdio.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
@@ -265,12 +270,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/ext/matrix_projection.hpp \
  /usr/include/glm/ext/matrix_projection.inl \
  /usr/include/glm/gtc/matrix_transform.inl \
- /usr/include/glm/ext/vector_relational.hpp \
- /usr/include/glm/ext/vector_relational.inl \
- /usr/include/glm/detail/type_float.hpp \
  /usr/include/glm/ext/quaternion_common.hpp \
- /usr/include/glm/ext/quaternion_geometric.hpp \
- /usr/include/glm/ext/quaternion_geometric.inl \
  /usr/include/glm/ext/quaternion_common.inl \
  /usr/include/glm/ext/quaternion_float.hpp \
  /usr/include/glm/detail/type_quat.hpp \

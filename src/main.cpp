@@ -1,6 +1,8 @@
 #include <glad/glad.h>
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/ext/quaternion_geometric.hpp>
+#include <glm/geometric.hpp>
 #include <glm/trigonometric.hpp>
 #define GLFW_INCLUDE_NONE
 #include "Misc/shaders.hpp"
@@ -58,6 +60,10 @@ void checkprogram(unsigned int i) {
     }
 }
 
+bool firstmo = true;
+float lastx = 400.0f, lasty = 300.0f;
+float yaw = 90.0f, pitch = 0.0f;
+
 int twidth, theight, tnrcolorch;
 int twidth2, theight2, tnrcolorch2;
 float movem = 0;
@@ -69,7 +75,46 @@ glm::vec3 cubePositions[] = {
     glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
     glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 1.0f);
+glm::vec3 jvec = glm::vec3(0.0f, 1.0f, 0.0f);
+glm::vec3 cameraRight = glm::normalize(glm::cross(jvec, cameraDirection));
+glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 
+void mousecallb(GLFWwindow *window, double xpos, double ypos) {
+    if (firstmo) {
+        lastx = xpos, lasty = ypos;
+        firstmo = false;
+    }
+    float sens = 0.2f;
+    float xoffset = (xpos - lastx) * sens;
+    float yoffset = (lasty - ypos) * sens;
+    lastx = xpos;
+    lasty = ypos;
+    yaw += xoffset;
+    pitch -= yoffset;
+
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+    glm::vec3 dir;
+    dir.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    dir.y = sin(glm::radians(pitch));
+    dir.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraDirection = glm::normalize(dir);
+}
+
+float fov = 45.0f;
+
+void zoomcallb(GLFWwindow *window, double xoffset, double yoffset) {
+    fov -= (float)yoffset;
+    if (fov < 1.0f)
+        fov = 1.0f;
+    if (fov > 90.0f)
+        fov = 90.0f;
+}
 
 int main() {
     glfwInit();
@@ -85,11 +130,15 @@ int main() {
         return -1;
     }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         printf("Glad init failed\n");
     }
     glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(window, framebuffercallback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, mousecallb);
+    glfwSetScrollCallback(window, zoomcallb);
 
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
@@ -189,21 +238,20 @@ int main() {
     int movloc = glGetUniformLocation(program, "mov");
 
     glm::mat4 projec;
-    projec = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f,
+    projec = glm::perspective(glm::radians(fov), (float)width / height, 0.1f,
                               100.0f);
-    glm::mat4 view;
-    view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,0.0f, -3.0f));
+    glm::mat4 view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
 
-
-    glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE,
-                       glm::value_ptr(projec));
-    glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
-                       glm::value_ptr(view));
     glEnable(GL_DEPTH_TEST);
     int loooc = glGetUniformLocation(program, "transform");
+
+    double pasttime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
         float gval = sin(time) / 2.0f;
+        double delta = time - pasttime;
+        pasttime = time;
+        float camspd = 5.0f * delta;
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
             glfwSetWindowShouldClose(window, true);
         }
@@ -211,19 +259,39 @@ int main() {
             movem += 0.1;
         if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
             movem -= 0.1;
-        // mats = glm::translate(mats, glm::vec3(0.0f, 0.0f, 0.0f));
-        // mats = glm::scale(mats, glm::vec3(gval, gval, 0.5f));
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+            cameraPos -= camspd * cameraDirection;
+        }
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+            cameraPos += camspd * cameraDirection;
+        }
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+            cameraPos -= cameraRight * camspd;
+        }
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+            cameraPos += cameraRight * camspd;
+        }
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(program);
         glUniform1f(loc, gval);
+        glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
+                           glm::value_ptr(view));
+
+        cameraRight = glm::normalize(glm::cross(jvec, cameraDirection));
+        cameraUp = glm::cross(cameraDirection, cameraRight);
+        view = glm::lookAt(cameraPos, cameraPos - cameraDirection, cameraUp);
+        projec = glm::perspective(glm::radians(fov), (float)width / height,
+                                  0.1f, 100.0f);
+        glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE,
+                           glm::value_ptr(projec));
+
         glUniform1f(movloc, movem);
         for (int i = 0; i < 10; i++) {
             glm::mat4 mats = glm::translate(glm::mat4(1.0f), cubePositions[i]);
-            mats =
-                glm::rotate(mats, glm::radians(45.0f * i), glm::vec3( 0.0f, 0.0f,1.0f));
-            glUniformMatrix4fv(loooc, 1,
-                               GL_FALSE, glm::value_ptr(mats));
+            mats = glm::rotate(mats, glm::radians(45.0f * i),
+                               glm::vec3(0.0f, 0.0f, 1.0f));
+            glUniformMatrix4fv(loooc, 1, GL_FALSE, glm::value_ptr(mats));
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, (void *)0);
         }
         glfwSwapBuffers(window);
