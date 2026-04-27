@@ -7,9 +7,11 @@ out vec2 texcord;
 uniform float color;
 uniform float mov;
 uniform mat4 transform;
+uniform mat4 proj;
+uniform mat4 view;
 
 void main(){
-    gl_Position = transform * vec4(apos.xyz,1.0f);
+    gl_Position = proj * view * transform * vec4(apos.xyz,1.0f);
     poss = col;
     texcord = texs;
 }

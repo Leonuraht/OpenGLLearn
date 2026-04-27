@@ -1,5 +1,7 @@
 #include <glad/glad.h>
+#include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/trigonometric.hpp>
 #define GLFW_INCLUDE_NONE
 #include "Misc/shaders.hpp"
 #include <GLFW/glfw3.h>
@@ -169,7 +171,15 @@ int main() {
     int loc = glGetUniformLocation(program, "color");
     int movloc = glGetUniformLocation(program, "mov");
 
-    // glm::vec4 vect(1.0f,0.0f,0.0f,1.0f);
+    glm::mat4 projec;
+    projec = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f,
+                              100.0f);
+    glm::mat4 view;
+    view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+    glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE,
+                       glm::value_ptr(projec));
+    glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
+                       glm::value_ptr(view));
     float k = 0.0f;
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
@@ -182,24 +192,17 @@ int main() {
         if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
             movem -= 0.1;
         glm::mat4 mats = glm::mat4(1.0f);
-        // mats = glm::translate(mats, glm::vec3(0.5f, -0.5f, 0.0f));
+        // mats = glm::translate(mats, glm::vec3(0.0f, 0.0f, 0.0f));
         mats = glm::rotate(mats, glm::radians(k), glm::vec3(1.0f, 1.0f, 1.0f));
-        mats = glm::scale(mats, glm::vec3(gval, gval, 0.5f));
+        // mats = glm::scale(mats, glm::vec3(gval, gval, 0.5f));
         k++;
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(program);
         glUniform1f(loc, gval);
         glUniform1f(movloc, movem);
-        mats = glm::translate(mats, glm::vec3(0.0f, 0.2f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1,
                            GL_FALSE, glm::value_ptr(mats));
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void *)0);
-        glm::mat4 goon =
-            glm::translate(glm::mat4(1.0f), glm::vec3(-0.7f, -0.7f, 0.0f));
-        goon = glm::scale(goon, glm::vec3(0.5f, 0.5f, 1.0f));
-        glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1,
-                           GL_FALSE, glm::value_ptr(goon));
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void *)0);
         glfwSwapBuffers(window);
         glfwPollEvents();

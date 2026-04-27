@@ -13,8 +13,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h \
- /usr/include/glm/ext/matrix_transform.hpp \
- /usr/include/glm/gtc/constants.hpp \
+ /usr/include/glm/ext/matrix_clip_space.hpp \
  /usr/include/glm/ext/scalar_constants.hpp \
  /usr/include/glm/detail/setup.hpp /usr/include/c++/15.2.1/cassert \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -26,8 +25,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/version.h /usr/include/glm/simd/platform.h \
  /usr/include/c++/15.2.1/cstdint /usr/include/c++/15.2.1/type_traits \
  /usr/include/glm/ext/scalar_constants.inl /usr/include/c++/15.2.1/limits \
- /usr/include/glm/gtc/constants.inl /usr/include/glm/geometric.hpp \
- /usr/include/glm/detail/type_vec3.hpp \
+ /usr/include/glm/geometric.hpp /usr/include/glm/detail/type_vec3.hpp \
  /usr/include/glm/detail/qualifier.hpp /usr/include/glm/detail/setup.hpp \
  /usr/include/glm/detail/type_vec3.inl \
  /usr/include/glm/detail/compute_vector_relational.hpp \
@@ -148,6 +146,9 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/detail/compute_common.hpp \
  /usr/include/glm/trigonometric.hpp \
  /usr/include/glm/detail/func_trigonometric.inl \
+ /usr/include/glm/ext/matrix_clip_space.inl \
+ /usr/include/glm/ext/matrix_transform.hpp \
+ /usr/include/glm/gtc/constants.hpp /usr/include/glm/gtc/constants.inl \
  /usr/include/glm/matrix.hpp /usr/include/glm/vec2.hpp \
  /usr/include/glm/ext/vector_bool2.hpp \
  /usr/include/glm/ext/vector_bool2_precision.hpp \
@@ -262,8 +263,6 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/ext/matrix_projection.hpp \
  /usr/include/glm/ext/matrix_projection.inl \
- /usr/include/glm/ext/matrix_clip_space.hpp \
- /usr/include/glm/ext/matrix_clip_space.inl \
  /usr/include/glm/gtc/matrix_transform.inl \
  /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/quaternion.hpp \
  /usr/include/glm/ext/vector_relational.hpp \
