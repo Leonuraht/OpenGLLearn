@@ -7,7 +7,6 @@
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <stb/stb_image.h>
 #include <string>
@@ -19,16 +18,25 @@ void framebuffercallback(GLFWwindow *window, int w, int h) {
 }
 
 float vertices[] = {
-    0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-    1.0f, // top right
-    0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-    0.0f, // bottom right
-    -0.5f, 0.5f,  0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-    1.0f, // top left
-    -0.5f, -0.5f, 0.0f, 0.5f, 0.5f, 0.5f, 0.0f,
-    0.0f // bottom left
+    0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f, 1.0f,
+    1.0f, // top right f
+    0.5f,  -0.5f, 0.5f,  0.0f, 1.0f, 0.0f, 1.0f,
+    0.0f, // bottom right f
+    -0.5f, 0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0.0f,
+    1.0f, // top left f
+    -0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f, 0.0f,
+    0.0f, // bottom left f
+    0.5f,  0.5f,  -0.5f, 1.0f, 0.0f, 0.0f, 1.0f,
+    1.0f, // top right b
+    0.5f,  -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f,
+    0.0f, // bottom right b
+    -0.5f, 0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+    1.0f, // top left b
+    -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f, 0.0f,
+    0.0f // bottom left b
 };
-unsigned int indices[] = {0, 1, 2, 1, 3, 2};
+unsigned int indices[] = {0, 1, 2, 1, 3, 2, 4, 5, 6, 5, 7, 6, 4, 0, 6, 0, 2, 6,
+                          1, 5, 3, 5, 7, 3, 4, 5, 0, 5, 1, 0, 2, 3, 6, 3, 7, 6};
 
 void checkshader(unsigned int i) {
     GLint succ;
@@ -53,6 +61,13 @@ void checkprogram(unsigned int i) {
 int twidth, theight, tnrcolorch;
 int twidth2, theight2, tnrcolorch2;
 float movem = 0;
+
+glm::vec3 cubePositions[] = {
+    glm::vec3(0.0f, 0.0f, 0.0f),    glm::vec3(2.0f, 5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f), glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3(2.4f, -0.4f, -3.5f),  glm::vec3(-1.7f, 3.0f, -7.5f),
+    glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
+    glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 
 int main() {
     glfwInit();
@@ -175,12 +190,13 @@ int main() {
     projec = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f,
                               100.0f);
     glm::mat4 view;
-    view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+    view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,0.0f, -3.0f));
     glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE,
                        glm::value_ptr(projec));
     glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
                        glm::value_ptr(view));
     float k = 0.0f;
+    glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
         float gval = sin(time) / 2.0f;
@@ -191,19 +207,22 @@ int main() {
             movem += 0.1;
         if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
             movem -= 0.1;
-        glm::mat4 mats = glm::mat4(1.0f);
         // mats = glm::translate(mats, glm::vec3(0.0f, 0.0f, 0.0f));
-        mats = glm::rotate(mats, glm::radians(k), glm::vec3(1.0f, 1.0f, 1.0f));
         // mats = glm::scale(mats, glm::vec3(gval, gval, 0.5f));
         k++;
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(program);
         glUniform1f(loc, gval);
         glUniform1f(movloc, movem);
-        glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1,
-                           GL_FALSE, glm::value_ptr(mats));
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void *)0);
+        for (int i = 0; i < 10; i++) {
+            glm::mat4 mats = glm::translate(glm::mat4(1.0f), cubePositions[i]);
+            mats =
+                glm::rotate(mats, glm::radians(k), glm::vec3(1.0f, 1.0f, 1.0f));
+            glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1,
+                               GL_FALSE, glm::value_ptr(mats));
+            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, (void *)0);
+        }
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
