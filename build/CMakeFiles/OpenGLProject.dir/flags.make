@@ -5,13 +5,13 @@
 # compile CXX with /usr/sbin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/leonuraht/storage/CFiles/OpenGLLight/include
+C_INCLUDES = -I/home/leonuraht/storage/CFiles/OpenGL/include
 
 C_FLAGS = -Wall -Wextra -Wpedantic
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/leonuraht/storage/CFiles/OpenGLLight/include
+CXX_INCLUDES = -I/home/leonuraht/storage/CFiles/OpenGL/include
 
 CXX_FLAGS = -std=gnu++23 -Wall -Wextra -Wpedantic
 

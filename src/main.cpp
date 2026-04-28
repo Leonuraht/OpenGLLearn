@@ -74,8 +74,8 @@ int main() {
     glBindVertexArray(0);
 
     Shader shader(
-        "/home/leonuraht/storage/CFiles/OpenGLLight/src/shaders/vertex.glsl",
-        "/home/leonuraht/storage/CFiles/OpenGLLight/src/shaders/fragment.glsl");
+        "/home/leonuraht/storage/CFiles/OpenGL/src/shaders/vertex.glsl",
+        "/home/leonuraht/storage/CFiles/OpenGL/src/shaders/fragment.glsl");
 
     glEnable(GL_DEPTH_TEST);
     glBindVertexArray(VAO);

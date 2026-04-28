@@ -1,26 +1,26 @@
 [
 {
-  "directory": "/home/leonuraht/storage/CFiles/OpenGLLight/build",
-  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGLLight/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/camera.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp",
-  "file": "/home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp",
+  "directory": "/home/leonuraht/storage/CFiles/OpenGL/build",
+  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGL/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/camera.cpp.o -c /home/leonuraht/storage/CFiles/OpenGL/src/camera.cpp",
+  "file": "/home/leonuraht/storage/CFiles/OpenGL/src/camera.cpp",
   "output": "CMakeFiles/OpenGLProject.dir/src/camera.cpp.o"
 },
 {
-  "directory": "/home/leonuraht/storage/CFiles/OpenGLLight/build",
-  "command": "/usr/sbin/cc  -I/home/leonuraht/storage/CFiles/OpenGLLight/include -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/glad.c.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c",
-  "file": "/home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c",
+  "directory": "/home/leonuraht/storage/CFiles/OpenGL/build",
+  "command": "/usr/sbin/cc  -I/home/leonuraht/storage/CFiles/OpenGL/include -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/glad.c.o -c /home/leonuraht/storage/CFiles/OpenGL/src/glad.c",
+  "file": "/home/leonuraht/storage/CFiles/OpenGL/src/glad.c",
   "output": "CMakeFiles/OpenGLProject.dir/src/glad.c.o"
 },
 {
-  "directory": "/home/leonuraht/storage/CFiles/OpenGLLight/build",
-  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGLLight/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/main.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp",
-  "file": "/home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp",
+  "directory": "/home/leonuraht/storage/CFiles/OpenGL/build",
+  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGL/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/main.cpp.o -c /home/leonuraht/storage/CFiles/OpenGL/src/main.cpp",
+  "file": "/home/leonuraht/storage/CFiles/OpenGL/src/main.cpp",
   "output": "CMakeFiles/OpenGLProject.dir/src/main.cpp.o"
 },
 {
-  "directory": "/home/leonuraht/storage/CFiles/OpenGLLight/build",
-  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGLLight/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/shader.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp",
-  "file": "/home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp",
+  "directory": "/home/leonuraht/storage/CFiles/OpenGL/build",
+  "command": "/usr/sbin/c++  -I/home/leonuraht/storage/CFiles/OpenGL/include -std=gnu++23 -Wall -Wextra -Wpedantic -o CMakeFiles/OpenGLProject.dir/src/shader.cpp.o -c /home/leonuraht/storage/CFiles/OpenGL/src/shader.cpp",
+  "file": "/home/leonuraht/storage/CFiles/OpenGL/src/shader.cpp",
   "output": "CMakeFiles/OpenGLProject.dir/src/shader.cpp.o"
 }
 ]
