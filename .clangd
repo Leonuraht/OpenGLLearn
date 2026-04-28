@@ -1,3 +1,0 @@
-CompileFlags:
-  Add: [-Wno-unused-parameter, -Wno-unused-variable]
-

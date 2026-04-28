@@ -53,10 +53,10 @@ RM = /usr/sbin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leonuraht/storage/CFiles/OpenGL
+CMAKE_SOURCE_DIR = /home/leonuraht/storage/CFiles/OpenGLLight
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leonuraht/storage/CFiles/OpenGL/build
+CMAKE_BINARY_DIR = /home/leonuraht/storage/CFiles/OpenGLLight/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OpenGLProject.dir/depend.make
@@ -72,60 +72,76 @@ include CMakeFiles/OpenGLProject.dir/flags.make
 CMakeFiles/OpenGLProject.dir/codegen:
 .PHONY : CMakeFiles/OpenGLProject.dir/codegen
 
+CMakeFiles/OpenGLProject.dir/src/camera.cpp.o: CMakeFiles/OpenGLProject.dir/flags.make
+CMakeFiles/OpenGLProject.dir/src/camera.cpp.o: /home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp
+CMakeFiles/OpenGLProject.dir/src/camera.cpp.o: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenGLProject.dir/src/camera.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/camera.cpp.o -MF CMakeFiles/OpenGLProject.dir/src/camera.cpp.o.d -o CMakeFiles/OpenGLProject.dir/src/camera.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp
+
+CMakeFiles/OpenGLProject.dir/src/camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenGLProject.dir/src/camera.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp > CMakeFiles/OpenGLProject.dir/src/camera.cpp.i
+
+CMakeFiles/OpenGLProject.dir/src/camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLProject.dir/src/camera.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp -o CMakeFiles/OpenGLProject.dir/src/camera.cpp.s
+
 CMakeFiles/OpenGLProject.dir/src/glad.c.o: CMakeFiles/OpenGLProject.dir/flags.make
-CMakeFiles/OpenGLProject.dir/src/glad.c.o: /home/leonuraht/storage/CFiles/OpenGL/src/glad.c
+CMakeFiles/OpenGLProject.dir/src/glad.c.o: /home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c
 CMakeFiles/OpenGLProject.dir/src/glad.c.o: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/OpenGLProject.dir/src/glad.c.o"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/glad.c.o -MF CMakeFiles/OpenGLProject.dir/src/glad.c.o.d -o CMakeFiles/OpenGLProject.dir/src/glad.c.o -c /home/leonuraht/storage/CFiles/OpenGL/src/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OpenGLProject.dir/src/glad.c.o"
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/glad.c.o -MF CMakeFiles/OpenGLProject.dir/src/glad.c.o.d -o CMakeFiles/OpenGLProject.dir/src/glad.c.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OpenGLProject.dir/src/glad.c.i"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGL/src/glad.c > CMakeFiles/OpenGLProject.dir/src/glad.c.i
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c > CMakeFiles/OpenGLProject.dir/src/glad.c.i
 
 CMakeFiles/OpenGLProject.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OpenGLProject.dir/src/glad.c.s"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGL/src/glad.c -o CMakeFiles/OpenGLProject.dir/src/glad.c.s
+	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c -o CMakeFiles/OpenGLProject.dir/src/glad.c.s
 
 CMakeFiles/OpenGLProject.dir/src/main.cpp.o: CMakeFiles/OpenGLProject.dir/flags.make
-CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/OpenGL/src/main.cpp
+CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp
 CMakeFiles/OpenGLProject.dir/src/main.cpp.o: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OpenGLProject.dir/src/main.cpp.o"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/main.cpp.o -MF CMakeFiles/OpenGLProject.dir/src/main.cpp.o.d -o CMakeFiles/OpenGLProject.dir/src/main.cpp.o -c /home/leonuraht/storage/CFiles/OpenGL/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGLProject.dir/src/main.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/main.cpp.o -MF CMakeFiles/OpenGLProject.dir/src/main.cpp.o.d -o CMakeFiles/OpenGLProject.dir/src/main.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp
 
 CMakeFiles/OpenGLProject.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenGLProject.dir/src/main.cpp.i"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGL/src/main.cpp > CMakeFiles/OpenGLProject.dir/src/main.cpp.i
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp > CMakeFiles/OpenGLProject.dir/src/main.cpp.i
 
 CMakeFiles/OpenGLProject.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLProject.dir/src/main.cpp.s"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGL/src/main.cpp -o CMakeFiles/OpenGLProject.dir/src/main.cpp.s
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp -o CMakeFiles/OpenGLProject.dir/src/main.cpp.s
 
-CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o: CMakeFiles/OpenGLProject.dir/flags.make
-CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o: /home/leonuraht/storage/CFiles/OpenGL/src/shaders.cpp
-CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o -MF CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o.d -o CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o -c /home/leonuraht/storage/CFiles/OpenGL/src/shaders.cpp
+CMakeFiles/OpenGLProject.dir/src/shader.cpp.o: CMakeFiles/OpenGLProject.dir/flags.make
+CMakeFiles/OpenGLProject.dir/src/shader.cpp.o: /home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp
+CMakeFiles/OpenGLProject.dir/src/shader.cpp.o: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/OpenGLProject.dir/src/shader.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenGLProject.dir/src/shader.cpp.o -MF CMakeFiles/OpenGLProject.dir/src/shader.cpp.o.d -o CMakeFiles/OpenGLProject.dir/src/shader.cpp.o -c /home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp
 
-CMakeFiles/OpenGLProject.dir/src/shaders.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenGLProject.dir/src/shaders.cpp.i"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGL/src/shaders.cpp > CMakeFiles/OpenGLProject.dir/src/shaders.cpp.i
+CMakeFiles/OpenGLProject.dir/src/shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenGLProject.dir/src/shader.cpp.i"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp > CMakeFiles/OpenGLProject.dir/src/shader.cpp.i
 
-CMakeFiles/OpenGLProject.dir/src/shaders.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLProject.dir/src/shaders.cpp.s"
-	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGL/src/shaders.cpp -o CMakeFiles/OpenGLProject.dir/src/shaders.cpp.s
+CMakeFiles/OpenGLProject.dir/src/shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenGLProject.dir/src/shader.cpp.s"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp -o CMakeFiles/OpenGLProject.dir/src/shader.cpp.s
 
 # Object files for target OpenGLProject
 OpenGLProject_OBJECTS = \
+"CMakeFiles/OpenGLProject.dir/src/camera.cpp.o" \
 "CMakeFiles/OpenGLProject.dir/src/glad.c.o" \
 "CMakeFiles/OpenGLProject.dir/src/main.cpp.o" \
-"CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o"
+"CMakeFiles/OpenGLProject.dir/src/shader.cpp.o"
 
 # External object files for target OpenGLProject
 OpenGLProject_EXTERNAL_OBJECTS =
 
+OpenGLProject: CMakeFiles/OpenGLProject.dir/src/camera.cpp.o
 OpenGLProject: CMakeFiles/OpenGLProject.dir/src/glad.c.o
 OpenGLProject: CMakeFiles/OpenGLProject.dir/src/main.cpp.o
-OpenGLProject: CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o
+OpenGLProject: CMakeFiles/OpenGLProject.dir/src/shader.cpp.o
 OpenGLProject: CMakeFiles/OpenGLProject.dir/build.make
 OpenGLProject: CMakeFiles/OpenGLProject.dir/compiler_depend.ts
 OpenGLProject: /usr/lib/libglfw.so.3.4
@@ -133,7 +149,7 @@ OpenGLProject: /usr/lib/libglm.a
 OpenGLProject: /usr/lib/libGLX.so
 OpenGLProject: /usr/lib/libOpenGL.so
 OpenGLProject: CMakeFiles/OpenGLProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable OpenGLProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable OpenGLProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OpenGLProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -145,6 +161,6 @@ CMakeFiles/OpenGLProject.dir/clean:
 .PHONY : CMakeFiles/OpenGLProject.dir/clean
 
 CMakeFiles/OpenGLProject.dir/depend:
-	cd /home/leonuraht/storage/CFiles/OpenGL/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leonuraht/storage/CFiles/OpenGL /home/leonuraht/storage/CFiles/OpenGL /home/leonuraht/storage/CFiles/OpenGL/build /home/leonuraht/storage/CFiles/OpenGL/build /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/OpenGLProject.dir/DependInfo.cmake "--color=$(COLOR)" OpenGLProject
+	cd /home/leonuraht/storage/CFiles/OpenGLLight/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/leonuraht/storage/CFiles/OpenGLLight /home/leonuraht/storage/CFiles/OpenGLLight /home/leonuraht/storage/CFiles/OpenGLLight/build /home/leonuraht/storage/CFiles/OpenGLLight/build /home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles/OpenGLProject.dir/DependInfo.cmake "--color=$(COLOR)" OpenGLProject
 .PHONY : CMakeFiles/OpenGLProject.dir/depend
 

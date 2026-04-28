@@ -1,11 +1,13 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OpenGLProject.dir/link.d"
+  "CMakeFiles/OpenGLProject.dir/src/camera.cpp.o"
+  "CMakeFiles/OpenGLProject.dir/src/camera.cpp.o.d"
   "CMakeFiles/OpenGLProject.dir/src/glad.c.o"
   "CMakeFiles/OpenGLProject.dir/src/glad.c.o.d"
   "CMakeFiles/OpenGLProject.dir/src/main.cpp.o"
   "CMakeFiles/OpenGLProject.dir/src/main.cpp.o.d"
-  "CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o"
-  "CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o.d"
+  "CMakeFiles/OpenGLProject.dir/src/shader.cpp.o"
+  "CMakeFiles/OpenGLProject.dir/src/shader.cpp.o.d"
   "OpenGLProject"
   "OpenGLProject.pdb"
 )

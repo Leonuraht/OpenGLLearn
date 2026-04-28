@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/leonuraht/storage/CFiles/OpenGL/src/glad.c" "CMakeFiles/OpenGLProject.dir/src/glad.c.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/glad.c.o.d"
-  "/home/leonuraht/storage/CFiles/OpenGL/src/main.cpp" "CMakeFiles/OpenGLProject.dir/src/main.cpp.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/main.cpp.o.d"
-  "/home/leonuraht/storage/CFiles/OpenGL/src/shaders.cpp" "CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o.d"
+  "/home/leonuraht/storage/CFiles/OpenGLLight/src/glad.c" "CMakeFiles/OpenGLProject.dir/src/glad.c.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/glad.c.o.d"
+  "/home/leonuraht/storage/CFiles/OpenGLLight/src/camera.cpp" "CMakeFiles/OpenGLProject.dir/src/camera.cpp.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/camera.cpp.o.d"
+  "/home/leonuraht/storage/CFiles/OpenGLLight/src/main.cpp" "CMakeFiles/OpenGLProject.dir/src/main.cpp.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/main.cpp.o.d"
+  "/home/leonuraht/storage/CFiles/OpenGLLight/src/shader.cpp" "CMakeFiles/OpenGLProject.dir/src/shader.cpp.o" "gcc" "CMakeFiles/OpenGLProject.dir/src/shader.cpp.o.d"
   "" "OpenGLProject" "gcc" "CMakeFiles/OpenGLProject.dir/link.d"
   )
 

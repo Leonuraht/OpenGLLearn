@@ -57,10 +57,10 @@ RM = /usr/sbin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/leonuraht/storage/CFiles/OpenGL
+CMAKE_SOURCE_DIR = /home/leonuraht/storage/CFiles/OpenGLLight
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/leonuraht/storage/CFiles/OpenGL/build
+CMAKE_BINARY_DIR = /home/leonuraht/storage/CFiles/OpenGLLight/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles /home/leonuraht/storage/CFiles/OpenGL/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles /home/leonuraht/storage/CFiles/OpenGLLight/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,7 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -129,6 +129,30 @@ OpenGLProject: cmake_check_build_system
 OpenGLProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/build
 .PHONY : OpenGLProject/fast
+
+src/camera.o: src/camera.cpp.o
+.PHONY : src/camera.o
+
+# target to build an object file
+src/camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/camera.cpp.o
+.PHONY : src/camera.cpp.o
+
+src/camera.i: src/camera.cpp.i
+.PHONY : src/camera.i
+
+# target to preprocess a source file
+src/camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/camera.cpp.i
+.PHONY : src/camera.cpp.i
+
+src/camera.s: src/camera.cpp.s
+.PHONY : src/camera.s
+
+# target to generate assembly for a file
+src/camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/camera.cpp.s
+.PHONY : src/camera.cpp.s
 
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
@@ -178,29 +202,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/shaders.o: src/shaders.cpp.o
-.PHONY : src/shaders.o
+src/shader.o: src/shader.cpp.o
+.PHONY : src/shader.o
 
 # target to build an object file
-src/shaders.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shaders.cpp.o
-.PHONY : src/shaders.cpp.o
+src/shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shader.cpp.o
+.PHONY : src/shader.cpp.o
 
-src/shaders.i: src/shaders.cpp.i
-.PHONY : src/shaders.i
+src/shader.i: src/shader.cpp.i
+.PHONY : src/shader.i
 
 # target to preprocess a source file
-src/shaders.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shaders.cpp.i
-.PHONY : src/shaders.cpp.i
+src/shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shader.cpp.i
+.PHONY : src/shader.cpp.i
 
-src/shaders.s: src/shaders.cpp.s
-.PHONY : src/shaders.s
+src/shader.s: src/shader.cpp.s
+.PHONY : src/shader.s
 
 # target to generate assembly for a file
-src/shaders.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shaders.cpp.s
-.PHONY : src/shaders.cpp.s
+src/shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/src/shader.cpp.s
+.PHONY : src/shader.cpp.s
 
 # Help Target
 help:
@@ -211,15 +235,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... OpenGLProject"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/shaders.o"
-	@echo "... src/shaders.i"
-	@echo "... src/shaders.s"
+	@echo "... src/shader.o"
+	@echo "... src/shader.i"
+	@echo "... src/shader.s"
 .PHONY : help
 
 
@@ -231,7 +258,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/leonuraht/storage/CFiles/OpenGLLight/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/leonuraht/storage/CFiles/OpenGL/build/cmake_install.cmake"
+		"/home/leonuraht/storage/CFiles/OpenGLLight/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
