@@ -25,7 +25,7 @@ void Camera::updatemat(int projloc, int viewloc) {
     if (!isDirty)
         return;
     proj = glm::perspective(FOV, asprat, near, far);
-    view = glm::lookAt(camerapos, camerapos - cameradir, cameraup);
+    view = glm::lookAt(camerapos, camerapos + cameradir, cameraup);
 
     glUniformMatrix4fv(projloc, 1, GL_FALSE, glm::value_ptr(proj));
     glUniformMatrix4fv(viewloc, 1, GL_FALSE, glm::value_ptr(view));

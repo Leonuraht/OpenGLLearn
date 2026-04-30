@@ -147,17 +147,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/ext/vector_relational.inl \
  /usr/include/glm/detail/type_float.hpp \
  /usr/include/glm/ext/quaternion_geometric.inl \
- /home/leonuraht/storage/CFiles/OpenGL/include/misc/camera.hpp \
- /usr/include/glm/glm.hpp /usr/include/c++/15.2.1/climits \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
- /usr/include/limits.h /usr/include/bits/posix1_lim.h \
- /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
- /usr/include/bits/pthread_stack_min-dynamic.h \
- /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h /usr/include/c++/15.2.1/cfloat \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/float.h \
- /usr/include/glm/fwd.hpp /usr/include/glm/vec2.hpp \
+ /usr/include/glm/matrix.hpp /usr/include/glm/vec2.hpp \
  /usr/include/glm/ext/vector_bool2.hpp \
  /usr/include/glm/ext/vector_bool2_precision.hpp \
  /usr/include/glm/ext/vector_float2.hpp \
@@ -192,7 +182,10 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/ext/vector_uint4_sized.hpp /usr/include/glm/mat2x2.hpp \
  /usr/include/glm/ext/matrix_double2x2.hpp \
  /usr/include/glm/detail/type_mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/matrix.hpp \
+ /usr/include/glm/detail/type_mat2x2.inl \
+ /usr/include/glm/ext/matrix_double2x2_precision.hpp \
+ /usr/include/glm/ext/matrix_float2x2.hpp \
+ /usr/include/glm/ext/matrix_float2x2_precision.hpp \
  /usr/include/glm/mat2x3.hpp /usr/include/glm/ext/matrix_double2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.inl \
@@ -242,10 +235,17 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: \
  /usr/include/glm/ext/matrix_float4x4.hpp \
  /usr/include/glm/ext/matrix_float4x4_precision.hpp \
  /usr/include/glm/detail/func_matrix.inl \
- /usr/include/glm/ext/matrix_double2x2_precision.hpp \
- /usr/include/glm/ext/matrix_float2x2.hpp \
- /usr/include/glm/ext/matrix_float2x2_precision.hpp \
- /usr/include/glm/trigonometric.hpp \
+ /home/leonuraht/storage/CFiles/OpenGL/include/misc/camera.hpp \
+ /usr/include/glm/glm.hpp /usr/include/c++/15.2.1/climits \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+ /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/bits/pthread_stack_min-dynamic.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ /usr/include/bits/uio_lim.h /usr/include/c++/15.2.1/cfloat \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/float.h \
+ /usr/include/glm/fwd.hpp /usr/include/glm/trigonometric.hpp \
  /usr/include/glm/detail/func_trigonometric.inl \
  /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
  /usr/include/glm/detail/type_half.hpp \

@@ -9,7 +9,7 @@
 class Camera {
   public:
     glm::vec3 camerapos, cameradir, cameraright, cameraup, cameratarget;
-    float FOV, asprat, near, far, sens = 0.3f,yaw = -90.0f,pitch = 0.0f,xlast = 0.0f,ylast = 0.0f;
+    float FOV, asprat, near, far, sens = 0.3f,yaw = 90.0f,pitch = 0.0f,xlast = 0.0f,ylast = 0.0f;
     bool firstmouse = true,isDirty = true;
     glm::mat4 proj, view;
     Camera(float FOV, float asprat, float near, float far, glm::vec3 campos,
