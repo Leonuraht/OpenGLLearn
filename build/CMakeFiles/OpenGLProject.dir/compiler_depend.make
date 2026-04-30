@@ -654,6 +654,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/Open
   /usr/include/c++/15.2.1/istream \
   /usr/include/c++/15.2.1/limits \
   /usr/include/c++/15.2.1/locale \
+  /usr/include/c++/15.2.1/math.h \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/numbers \
   /usr/include/c++/15.2.1/optional \
@@ -661,6 +662,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/Open
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
   /usr/include/c++/15.2.1/span \
   /usr/include/c++/15.2.1/stdexcept \
+  /usr/include/c++/15.2.1/stdlib.h \
   /usr/include/c++/15.2.1/streambuf \
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
@@ -896,6 +898,7 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/Open
   /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
+  /usr/include/stb/stb_image.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
@@ -909,12 +912,16 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o: /home/leonuraht/storage/CFiles/Open
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/emmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/float.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h
 
 CMakeFiles/OpenGLProject.dir/src/shader.cpp.o: /home/leonuraht/storage/CFiles/OpenGL/src/shader.cpp \
   /home/leonuraht/storage/CFiles/OpenGL/include/KHR/khrplatform.h \
@@ -1215,6 +1222,12 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o:
 
 /usr/lib/Scrt1.o:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/emmintrin.h:
+
 /usr/include/time.h:
 
 /usr/include/sys/single_threaded.h:
@@ -1241,9 +1254,13 @@ CMakeFiles/OpenGLProject.dir/src/main.cpp.o:
 
 /usr/include/c++/15.2.1/string:
 
+/usr/include/c++/15.2.1/stdlib.h:
+
 /usr/include/c++/15.2.1/stdexcept:
 
 /usr/include/c++/15.2.1/optional:
+
+/usr/include/c++/15.2.1/math.h:
 
 /usr/include/c++/15.2.1/format:
 
@@ -1478,6 +1495,8 @@ CMakeFiles/OpenGLProject.dir/src/shader.cpp.o:
 /usr/include/glm/ext/vector_bool2_precision.hpp:
 
 /usr/include/glm/ext/vector_bool2.hpp:
+
+/usr/include/stb/stb_image.h:
 
 /usr/include/glm/ext/vector_bool1.hpp:
 
@@ -2116,6 +2135,8 @@ CMakeFiles/OpenGLProject.dir/src/glad.c.o:
 /usr/include/glm/detail/setup.hpp:
 
 /usr/include/glm/ext/matrix_clip_space.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h:
 
 /usr/include/features-time64.h:
 

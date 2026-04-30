@@ -8,39 +8,60 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
 
 int width = 800, height = 600;
-
 float vertices[] = {
-    -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f, 0.5f,  -0.5f, -0.5f,
-    0.0f,  0.0f,  -1.0f, 0.5f,  0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f,
-    0.5f,  0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f, -0.5f, 0.5f,  -0.5f,
-    0.0f,  0.0f,  -1.0f, -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f,
+    // positions          // normals           // texture coords
+    -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f, 0.0f,  0.0f,  0.5f,  -0.5f,
+    -0.5f, 0.0f,  0.0f,  -1.0f, 1.0f,  0.0f,  0.5f,  0.5f,  -0.5f, 0.0f,
+    0.0f,  -1.0f, 1.0f,  1.0f,  0.5f,  0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f,
+    1.0f,  1.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,  0.0f,  -1.0f, 0.0f,  1.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f,  0.0f,  -1.0f, 0.0f,  0.0f,
 
-    -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, 0.5f,
-    0.0f,  0.0f,  1.0f,  0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-    0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  -0.5f, 0.5f,  0.5f,
-    0.0f,  0.0f,  1.0f,  -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,
+    -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,  0.5f,  -0.5f,
+    0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,  0.5f,  0.5f,  0.5f,  0.0f,
+    0.0f,  1.0f,  1.0f,  1.0f,  0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+    1.0f,  1.0f,  -0.5f, 0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
+    -0.5f, -0.5f, 0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
 
-    -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,  -0.5f, 0.5f,  -0.5f,
-    -1.0f, 0.0f,  0.0f,  -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,  -0.5f, -0.5f, 0.5f,
-    -1.0f, 0.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,
+    -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,
+    -0.5f, -1.0f, 0.0f,  0.0f,  1.0f,  1.0f,  -0.5f, -0.5f, -0.5f, -1.0f,
+    0.0f,  0.0f,  0.0f,  1.0f,  -0.5f, -0.5f, -0.5f, -1.0f, 0.0f,  0.0f,
+    0.0f,  1.0f,  -0.5f, -0.5f, 0.5f,  -1.0f, 0.0f,  0.0f,  0.0f,  0.0f,
+    -0.5f, 0.5f,  0.5f,  -1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
 
-    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.5f,  0.5f,  -0.5f,
-    1.0f,  0.0f,  0.0f,  0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,
-    0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,  0.5f,  -0.5f, 0.5f,
-    1.0f,  0.0f,  0.0f,  0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,  0.5f,  0.5f,
+    -0.5f, 1.0f,  0.0f,  0.0f,  1.0f,  1.0f,  0.5f,  -0.5f, -0.5f, 1.0f,
+    0.0f,  0.0f,  0.0f,  1.0f,  0.5f,  -0.5f, -0.5f, 1.0f,  0.0f,  0.0f,
+    0.0f,  1.0f,  0.5f,  -0.5f, 0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+    0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
 
-    -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,  0.5f,  -0.5f, -0.5f,
-    0.0f,  -1.0f, 0.0f,  0.5f,  -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,
-    0.5f,  -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,  -0.5f, -0.5f, 0.5f,
-    0.0f,  -1.0f, 0.0f,  -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,  0.0f,  1.0f,  0.5f,  -0.5f,
+    -0.5f, 0.0f,  -1.0f, 0.0f,  1.0f,  1.0f,  0.5f,  -0.5f, 0.5f,  0.0f,
+    -1.0f, 0.0f,  1.0f,  0.0f,  0.5f,  -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,
+    1.0f,  0.0f,  -0.5f, -0.5f, 0.5f,  0.0f,  -1.0f, 0.0f,  0.0f,  0.0f,
+    -0.5f, -0.5f, -0.5f, 0.0f,  -1.0f, 0.0f,  0.0f,  1.0f,
 
-    -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f,  0.5f,  0.5f,  -0.5f,
-    0.0f,  1.0f,  0.0f,  0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-    0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,
-    0.0f,  1.0f,  0.0f,  -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f};
+    -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f,  0.0f,  1.0f,  0.5f,  0.5f,
+    -0.5f, 0.0f,  1.0f,  0.0f,  1.0f,  1.0f,  0.5f,  0.5f,  0.5f,  0.0f,
+    1.0f,  0.0f,  1.0f,  0.0f,  0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+    1.0f,  0.0f,  -0.5f, 0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+    -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f,  0.0f,  1.0f};
+
+glm::vec3 cubePositions[] = {
+    glm::vec3( 0.0f,  0.0f,  0.0f),
+    glm::vec3( 2.0f,  5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3( 2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f,  3.0f, -7.5f),
+    glm::vec3( 1.3f, -2.0f, -2.5f),
+    glm::vec3( 1.5f,  2.0f, -2.5f),
+    glm::vec3( 1.5f,  0.2f, -1.5f),
+    glm::vec3(-1.3f,  1.0f, -1.5f)
+};
 
 Camera camera(45.0f, (float)width / height, 0.1f, 100.0f,
               glm::vec3(0.0f, 0.0f, -3.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -61,7 +82,6 @@ int main() {
         std::cerr << "Window Creation failed" << std::endl;
         return -1;
     }
-
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -82,11 +102,14 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
                           (void *)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
                           (void *)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                          (void *)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
     glBindVertexArray(0);
 
     Shader shader("src/shaders/vertex.glsl", "src/shaders/fragment.glsl");
@@ -105,14 +128,48 @@ int main() {
         traloc = glGetUniformLocation(shader.program, "transform"),
         islig = glGetUniformLocation(shader.program, "islight"),
         colorb = glGetUniformLocation(shader.program, "color"),
-        lightloc = glGetUniformLocation(shader.program, "lightpos"),
+        lightloc = glGetUniformLocation(shader.program, "light.pos"),
         invtrans = glGetUniformLocation(shader.program, "invtrans"),
-        viewpos = glGetUniformLocation(shader.program, "viewpos");
+        matamb = glGetUniformLocation(shader.program, "material.ambient"),
+        matdiff = glGetUniformLocation(shader.program, "material.diffuse"),
+        matspe = glGetUniformLocation(shader.program, "material.specular"),
+        ligamb = glGetUniformLocation(shader.program, "light.ambient"),
+        ligdiff = glGetUniformLocation(shader.program, "light.diffuse"),
+        ligspe = glGetUniformLocation(shader.program, "light.specular"),
+        matshi = glGetUniformLocation(shader.program, "material.shineness");
 
     glUseProgram(shader.program);
     glUniform3f(colorb, objcolor.x, objcolor.y, objcolor.z);
     glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
+    glUniform3f(matamb, 0.0f, 1.0f, 0.6f);
+    glUniform1i(matdiff, 0);
+    glUniform1i(matspe, 1);
+    glUniform1f(matshi, 25.0f);
+    glUniform3f(ligamb, 0.2f, 0.2f, 0.2f);
+    glUniform3f(ligdiff, 0.5f, 0.5f, 0.5f);
+    glUniform3f(ligspe, 1.0f, 1.0f, 1.0f);
 
+    glActiveTexture(GL_TEXTURE0);
+    int tw, th, tch, tmw, tmh, tmch;
+    unsigned int diffmap, specmap;
+    glGenTextures(1, &diffmap);
+    glBindTexture(GL_TEXTURE_2D, diffmap);
+    unsigned char *diffmapval =
+        stbi_load("/home/leonuraht/Downloads/container.png", &tw, &th, &tch, 3);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB, GL_UNSIGNED_BYTE,
+                 diffmapval);
+    glGenerateTextureMipmap(diffmap);
+    glActiveTexture(GL_TEXTURE1);
+    glGenTextures(1, &specmap);
+    glBindTexture(GL_TEXTURE_2D, specmap);
+    unsigned char *spdata =
+        stbi_load("/home/leonuraht/Downloads/container_specular1.png", &tmw,
+                  &tmh, &tmch, 3);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tmw, tmh, 0, GL_RGB,
+                 GL_UNSIGNED_BYTE, spdata);
+    glGenerateTextureMipmap(specmap);
+    stbi_image_free(spdata);
+    stbi_image_free(diffmapval);
     double pasttime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
@@ -124,28 +181,36 @@ int main() {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // transform =
-        //     glm::rotate(transform, (float)delta * glm::radians(60.0f) * 1.2f,
-        //                 glm::vec3(2.0f, 3.0f, 1.0f));
-        glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(transform));
+        transform =
+            glm::rotate(transform, (float)delta * glm::radians(6.0f) * 1.2f,
+                        glm::vec3(2.0f, 3.0f, 1.0f));
+        // glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(transform));
 
         camera.updatevec();
         camera.updatemat(projloc, viewloc);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for (unsigned int i = 0; i < 10; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle),
+                                glm::vec3(1.0f, 0.3f, 0.5f));
+            glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(model * transform));
+                    glUniformMatrix4fv(
+            invtrans, 1, GL_TRUE,
+            glm::value_ptr(glm::inverse(camera.view *model *  transform)));
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
+        lightmove =
+            glm::translate(glm::mat4(1.0f), glm::vec3(-1.5f, 1.3f, -2.5f));
+        lightpos = glm::vec3(camera.view * lightmove *
+                             glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+
+        glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
+
+        glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(lightmove));
 
         glUniform1i(islig, 1);
-        lightmove = glm::rotate(glm::mat4(1.0f),
-                                (float)time * glm::radians(60.0f) * 1.2f,
-                                glm::vec3(2.0f, 3.0f, 1.0f));
-        lightmove = glm::translate(lightmove, glm::vec3(-1.5f, 1.3f, -2.5f));
-        lightpos = glm::vec3(lightmove * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
-        glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
-        glUniform3f(viewpos, camera.camerapos.x, camera.camerapos.y,
-                    camera.camerapos.z);
-        glUniformMatrix4fv(
-            invtrans, 1, GL_TRUE,
-            glm::value_ptr(glm::inverse(camera.view * transform)));
-        glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(lightmove));
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glfwSwapBuffers(window);
         glfwPollEvents();
