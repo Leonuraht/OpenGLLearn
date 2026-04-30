@@ -98,8 +98,7 @@ int main() {
                                       glm::vec3(1.0f, 1.0f, 1.0f));
     glm::vec3 lightpos = glm::vec3(-1.5f, 1.3f, -2.5f);
     glm::mat4 lightmove = glm::translate(glm::mat4(1.0f), lightpos);
-    glm::vec3 objpos = glm::vec3(0.0f);
-    glm::vec3 objcolor = glm::vec3(1.0f,0.5f,0.31f);
+    glm::vec3 objcolor = glm::vec3(1.0f, 0.5f, 0.31f);
 
     int projloc = glGetUniformLocation(shader.program, "projection"),
         viewloc = glGetUniformLocation(shader.program, "view"),
@@ -107,12 +106,12 @@ int main() {
         islig = glGetUniformLocation(shader.program, "islight"),
         colorb = glGetUniformLocation(shader.program, "color"),
         lightloc = glGetUniformLocation(shader.program, "lightpos"),
-        fragloc = glGetUniformLocation(shader.program, "fragpos");
+        invtrans = glGetUniformLocation(shader.program, "invtrans"),
+        viewpos = glGetUniformLocation(shader.program, "viewpos");
 
     glUseProgram(shader.program);
-    glUniform3f(colorb,objcolor.x,objcolor.y,objcolor.z);
-    glUniform3f(lightloc,lightpos.x,lightpos.y,lightpos.z);
-    glUniform3f(fragloc,objpos.x,objpos.y,objpos.z);
+    glUniform3f(colorb, objcolor.x, objcolor.y, objcolor.z);
+    glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
 
     double pasttime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
@@ -135,13 +134,22 @@ int main() {
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glUniform1i(islig, 1);
+        lightmove = glm::rotate(glm::mat4(1.0f),
+                                (float)time * glm::radians(60.0f) * 1.2f,
+                                glm::vec3(2.0f, 3.0f, 1.0f));
+        lightmove = glm::translate(lightmove, glm::vec3(-1.5f, 1.3f, -2.5f));
+        lightpos = glm::vec3(lightmove * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+        glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
+        glUniform3f(viewpos, camera.camerapos.x, camera.camerapos.y,
+                    camera.camerapos.z);
+        glUniformMatrix4fv(
+            invtrans, 1, GL_TRUE,
+            glm::value_ptr(glm::inverse(camera.view * transform)));
         glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(lightmove));
         glDrawArrays(GL_TRIANGLES, 0, 36);
-
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
     glfwTerminate();
     return 0;
 }
