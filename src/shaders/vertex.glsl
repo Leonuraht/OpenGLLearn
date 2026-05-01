@@ -13,10 +13,10 @@ uniform mat4 projection;
 uniform mat4 invtrans;
 uniform bool islight;
 
-void main(){
-    vec4 viewvec = view * transform * vec4(apos,1.0f);
+void main() {
+    vec4 viewvec = view * transform * vec4(apos, 1.0f);
     gl_Position = projection * viewvec;
     fragpos = vec3(viewvec);
     texcord = texcor;
-    if(!islight) norms = mat3(invtrans) * norm;
+    if (!islight) norms = mat3(invtrans) * norm;
 }

@@ -51,17 +51,11 @@ float vertices[] = {
     -0.5f, 0.5f,  -0.5f, 0.0f,  1.0f,  0.0f,  0.0f,  1.0f};
 
 glm::vec3 cubePositions[] = {
-    glm::vec3( 0.0f,  0.0f,  0.0f),
-    glm::vec3( 2.0f,  5.0f, -15.0f),
-    glm::vec3(-1.5f, -2.2f, -2.5f),
-    glm::vec3(-3.8f, -2.0f, -12.3f),
-    glm::vec3( 2.4f, -0.4f, -3.5f),
-    glm::vec3(-1.7f,  3.0f, -7.5f),
-    glm::vec3( 1.3f, -2.0f, -2.5f),
-    glm::vec3( 1.5f,  2.0f, -2.5f),
-    glm::vec3( 1.5f,  0.2f, -1.5f),
-    glm::vec3(-1.3f,  1.0f, -1.5f)
-};
+    glm::vec3(0.0f, 0.0f, 0.0f),    glm::vec3(2.0f, 5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f), glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3(2.4f, -0.4f, -3.5f),  glm::vec3(-1.7f, 3.0f, -7.5f),
+    glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
+    glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 
 Camera camera(45.0f, (float)width / height, 0.1f, 100.0f,
               glm::vec3(0.0f, 0.0f, -3.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -119,8 +113,6 @@ int main() {
 
     glm::mat4 transform = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f),
                                       glm::vec3(1.0f, 1.0f, 1.0f));
-    glm::vec3 lightpos = glm::vec3(-1.5f, 1.3f, -2.5f);
-    glm::mat4 lightmove = glm::translate(glm::mat4(1.0f), lightpos);
     glm::vec3 objcolor = glm::vec3(1.0f, 0.5f, 0.31f);
 
     int projloc = glGetUniformLocation(shader.program, "projection"),
@@ -128,26 +120,45 @@ int main() {
         traloc = glGetUniformLocation(shader.program, "transform"),
         islig = glGetUniformLocation(shader.program, "islight"),
         colorb = glGetUniformLocation(shader.program, "color"),
-        lightloc = glGetUniformLocation(shader.program, "light.pos"),
         invtrans = glGetUniformLocation(shader.program, "invtrans"),
         matamb = glGetUniformLocation(shader.program, "material.ambient"),
         matdiff = glGetUniformLocation(shader.program, "material.diffuse"),
         matspe = glGetUniformLocation(shader.program, "material.specular"),
-        ligamb = glGetUniformLocation(shader.program, "light.ambient"),
-        ligdiff = glGetUniformLocation(shader.program, "light.diffuse"),
-        ligspe = glGetUniformLocation(shader.program, "light.specular"),
         matshi = glGetUniformLocation(shader.program, "material.shineness");
-
+   
     glUseProgram(shader.program);
     glUniform3f(colorb, objcolor.x, objcolor.y, objcolor.z);
-    glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
     glUniform3f(matamb, 0.0f, 1.0f, 0.6f);
     glUniform1i(matdiff, 0);
     glUniform1i(matspe, 1);
     glUniform1f(matshi, 25.0f);
-    glUniform3f(ligamb, 0.2f, 0.2f, 0.2f);
-    glUniform3f(ligdiff, 0.5f, 0.5f, 0.5f);
-    glUniform3f(ligspe, 1.0f, 1.0f, 1.0f);
+
+    glUniform3f(glGetUniformLocation(shader.program, "Dirlight.ambient"), 0.05f,
+                0.05f, 0.05f);
+    glUniform3f(glGetUniformLocation(shader.program, "Dirlight.diffuse"), 0.4f,
+                0.4f, 0.4f);
+    glUniform3f(glGetUniformLocation(shader.program, "Dirlight.specular"), 0.5f,
+                0.5f, 0.5f);
+
+    
+    for (int i = 0; i < 4; i++) {
+        std::string number = std::to_string(i);
+        glUniform3f(
+            glGetUniformLocation(shader.program,
+                                 ("light[" + number + "].ambient").c_str()),
+            0.05f, 0.05f, 0.05f);
+        glUniform3f(
+            glGetUniformLocation(shader.program,
+                                 ("light[" + number + "].diffuse").c_str()),
+            0.8f, 0.8f, 0.8f);
+        glUniform3f(
+            glGetUniformLocation(shader.program,
+                                 ("light[" + number + "].specular").c_str()),
+            1.0f, 1.0f, 1.0f);
+    }
+    glm::vec3 pointLightPositions[] = {
+        glm::vec3(0.7f, 0.2f, 2.0f), glm::vec3(2.3f, -3.3f, -4.0f),
+        glm::vec3(-4.0f, 2.0f, -12.0f), glm::vec3(0.0f, 0.0f, -3.0f)};
 
     glActiveTexture(GL_TEXTURE0);
     int tw, th, tch, tmw, tmh, tmch;
@@ -163,13 +174,15 @@ int main() {
     glGenTextures(1, &specmap);
     glBindTexture(GL_TEXTURE_2D, specmap);
     unsigned char *spdata =
-        stbi_load("/home/leonuraht/Downloads/container_specular1.png", &tmw,
+        stbi_load("/home/leonuraht/Downloads/container_specular.png", &tmw,
                   &tmh, &tmch, 3);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tmw, tmh, 0, GL_RGB,
                  GL_UNSIGNED_BYTE, spdata);
     glGenerateTextureMipmap(specmap);
+
     stbi_image_free(spdata);
     stbi_image_free(diffmapval);
+
     double pasttime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
         double time = glfwGetTime();
@@ -182,36 +195,49 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         transform =
-            glm::rotate(transform, (float)delta * glm::radians(6.0f) * 1.2f,
+            glm::rotate(transform, (float)delta * glm::radians(10.0f) * 1.2f,
                         glm::vec3(2.0f, 3.0f, 1.0f));
-        // glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(transform));
 
         camera.updatevec();
         camera.updatemat(projloc, viewloc);
+
+        glm::vec3 dirLightDirection = glm::vec3(-0.2f, -1.0f, -0.3f);
+        glm::vec3 viewDirLight =
+            glm::vec3(camera.view * glm::vec4(dirLightDirection, 0.0f));
+        glUniform3f(glGetUniformLocation(shader.program, "Dirlight.dir"),
+                    viewDirLight.x, viewDirLight.y, viewDirLight.z);
+
+        for (int i = 0; i < 4; i++) {
+            std::string number = std::to_string(i);
+            glm::vec3 viewLightPos = glm::vec3(
+                camera.view * glm::vec4(pointLightPositions[i], 1.0f));
+            glUniform3f(
+                glGetUniformLocation(shader.program,
+                                     ("light[" + number + "].pos").c_str()),
+                viewLightPos.x, viewLightPos.y, viewLightPos.z);
+        }
         for (unsigned int i = 0; i < 10; i++) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             model = glm::rotate(model, glm::radians(angle),
                                 glm::vec3(1.0f, 0.3f, 0.5f));
-            glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(model * transform));
-                    glUniformMatrix4fv(
-            invtrans, 1, GL_TRUE,
-            glm::value_ptr(glm::inverse(camera.view *model *  transform)));
+            glUniformMatrix4fv(traloc, 1, GL_FALSE,
+                               glm::value_ptr(model * transform));
+            glUniformMatrix4fv(
+                invtrans, 1, GL_TRUE,
+                glm::value_ptr(glm::inverse(camera.view * model * transform)));
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
-        lightmove =
-            glm::translate(glm::mat4(1.0f), glm::vec3(-1.5f, 1.3f, -2.5f));
-        lightpos = glm::vec3(camera.view * lightmove *
-                             glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
-
-        glUniform3f(lightloc, lightpos.x, lightpos.y, lightpos.z);
-
-        glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(lightmove));
-
         glUniform1i(islig, 1);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for (unsigned int i = 0; i < 4; i++) {
+            glm::mat4 lightModel = glm::mat4(1.0f);
+            lightModel = glm::translate(lightModel, pointLightPositions[i]);
+            lightModel = glm::scale(lightModel, glm::vec3(0.2f));
+            glUniformMatrix4fv(traloc, 1, GL_FALSE, glm::value_ptr(lightModel));
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
