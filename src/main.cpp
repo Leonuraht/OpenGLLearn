@@ -125,7 +125,7 @@ int main() {
         matdiff = glGetUniformLocation(shader.program, "material.diffuse"),
         matspe = glGetUniformLocation(shader.program, "material.specular"),
         matshi = glGetUniformLocation(shader.program, "material.shineness");
-   
+
     glUseProgram(shader.program);
     glUniform3f(colorb, objcolor.x, objcolor.y, objcolor.z);
     glUniform3f(matamb, 0.0f, 1.0f, 0.6f);
@@ -140,7 +140,6 @@ int main() {
     glUniform3f(glGetUniformLocation(shader.program, "Dirlight.specular"), 0.5f,
                 0.5f, 0.5f);
 
-    
     for (int i = 0; i < 4; i++) {
         std::string number = std::to_string(i);
         glUniform3f(

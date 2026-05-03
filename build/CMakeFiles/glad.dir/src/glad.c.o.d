@@ -1,4 +1,4 @@
-CMakeFiles/OpenGLProject.dir/src/glad.c.o: \
+CMakeFiles/glad.dir/src/glad.c.o: \
  /home/leonuraht/storage/CFiles/OpenGL/src/glad.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \

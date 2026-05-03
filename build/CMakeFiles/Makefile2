@@ -63,11 +63,13 @@ CMAKE_BINARY_DIR = /home/leonuraht/storage/CFiles/OpenGL/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/OpenGLProject.dir/all
+all: CMakeFiles/glad.dir/all
+all: CMakeFiles/app.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/OpenGLProject.dir/codegen
+codegen: CMakeFiles/glad.dir/codegen
+codegen: CMakeFiles/app.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +77,73 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/OpenGLProject.dir/clean
+clean: CMakeFiles/glad.dir/clean
+clean: CMakeFiles/app.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/OpenGLProject.dir
+# Target rules for target CMakeFiles/glad.dir
 
 # All Build rule for target.
-CMakeFiles/OpenGLProject.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target OpenGLProject"
-.PHONY : CMakeFiles/OpenGLProject.dir/all
+CMakeFiles/glad.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=5,6 "Built target glad"
+.PHONY : CMakeFiles/glad.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/OpenGLProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/OpenGLProject.dir/all
+CMakeFiles/glad.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/glad.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 0
-.PHONY : CMakeFiles/OpenGLProject.dir/rule
+.PHONY : CMakeFiles/glad.dir/rule
 
 # Convenience name for target.
-OpenGLProject: CMakeFiles/OpenGLProject.dir/rule
-.PHONY : OpenGLProject
+glad: CMakeFiles/glad.dir/rule
+.PHONY : glad
 
 # codegen rule for target.
-CMakeFiles/OpenGLProject.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target OpenGLProject"
-.PHONY : CMakeFiles/OpenGLProject.dir/codegen
+CMakeFiles/glad.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=5,6 "Finished codegen for target glad"
+.PHONY : CMakeFiles/glad.dir/codegen
 
 # clean rule for target.
-CMakeFiles/OpenGLProject.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenGLProject.dir/build.make CMakeFiles/OpenGLProject.dir/clean
-.PHONY : CMakeFiles/OpenGLProject.dir/clean
+CMakeFiles/glad.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/clean
+.PHONY : CMakeFiles/glad.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/app.dir
+
+# All Build rule for target.
+CMakeFiles/app.dir/all: CMakeFiles/glad.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=1,2,3,4 "Built target app"
+.PHONY : CMakeFiles/app.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/app.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/app.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles 0
+.PHONY : CMakeFiles/app.dir/rule
+
+# Convenience name for target.
+app: CMakeFiles/app.dir/rule
+.PHONY : app
+
+# codegen rule for target.
+CMakeFiles/app.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target app"
+.PHONY : CMakeFiles/app.dir/codegen
+
+# clean rule for target.
+CMakeFiles/app.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/clean
+.PHONY : CMakeFiles/app.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

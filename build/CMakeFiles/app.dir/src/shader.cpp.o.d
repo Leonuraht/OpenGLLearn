@@ -1,4 +1,4 @@
-CMakeFiles/OpenGLProject.dir/src/shader.cpp.o: \
+CMakeFiles/app.dir/src/shader.cpp.o: \
  /home/leonuraht/storage/CFiles/OpenGL/src/shader.cpp \
  /usr/include/stdc-predef.h \
  /home/leonuraht/storage/CFiles/OpenGL/include/misc/shader.hpp \

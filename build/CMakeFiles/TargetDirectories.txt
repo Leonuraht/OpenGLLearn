@@ -1,3 +1,4 @@
-/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/OpenGLProject.dir
+/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/glad.dir
+/home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/app.dir
 /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/edit_cache.dir
 /home/leonuraht/storage/CFiles/OpenGL/build/CMakeFiles/rebuild_cache.dir

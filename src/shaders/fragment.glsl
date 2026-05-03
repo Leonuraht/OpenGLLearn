@@ -59,9 +59,9 @@ vec3 calcSpotLight(Light light, vec3 norm, vec3 viewdir, float theta) {
     float attenuation = 1.0 / (1.0 + 0.09 * len + 0.032 * len * len);
     diff *= attenuation;
     spec *= attenuation;
-    float intensity = clamp((cos(radians(theta)) - 0.82)/0.09,0.0,1.0);
+    float intensity = clamp((cos(radians(theta)) - 0.82) / 0.09, 0.0, 1.0);
     intensity = intensity * intensity * (3.0 - 2.0 * intensity);
-    
+
     vec3 ambient = attenuation * light.ambient * vec3(texture(material.diffuse, texcord));
     vec3 diffuse = intensity * diff * light.diffuse * vec3(texture(material.diffuse, texcord));
     vec3 specular = intensity * spec * light.specular * vec3(texture(material.specular, texcord));

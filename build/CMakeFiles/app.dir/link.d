@@ -1,11 +1,11 @@
-OpenGLProject: \
+app: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
-  CMakeFiles/OpenGLProject.dir/src/camera.cpp.o \
-  CMakeFiles/OpenGLProject.dir/src/glad.c.o \
-  CMakeFiles/OpenGLProject.dir/src/main.cpp.o \
-  CMakeFiles/OpenGLProject.dir/src/shader.cpp.o \
+  CMakeFiles/app.dir/src/camera.cpp.o \
+  CMakeFiles/app.dir/src/main.cpp.o \
+  CMakeFiles/app.dir/src/shader.cpp.o \
+  libglad.a \
   /usr/lib/libglfw.so.3.4 \
   /usr/lib/libglm.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libdl.a \
@@ -50,13 +50,13 @@ OpenGLProject: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
-CMakeFiles/OpenGLProject.dir/src/camera.cpp.o:
+CMakeFiles/app.dir/src/camera.cpp.o:
 
-CMakeFiles/OpenGLProject.dir/src/glad.c.o:
+CMakeFiles/app.dir/src/main.cpp.o:
 
-CMakeFiles/OpenGLProject.dir/src/main.cpp.o:
+CMakeFiles/app.dir/src/shader.cpp.o:
 
-CMakeFiles/OpenGLProject.dir/src/shader.cpp.o:
+libglad.a:
 
 /usr/lib/libglfw.so.3.4:
 
